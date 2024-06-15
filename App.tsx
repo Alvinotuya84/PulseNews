@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import {store} from '@/src/app/store';
 import SplashScreen from '@/src/components/SplashScreen';
 import Navigation from '@/src/navigation';

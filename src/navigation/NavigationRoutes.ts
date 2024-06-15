@@ -2,8 +2,10 @@ import {NavigationProp} from '@react-navigation/native';
 
 export const NavigationRoutes = {
   Auth: {
-    Login: 'LoginScreen',
-    SignUp: 'SignUpScreen',
+    LoginScreen: 'LoginScreen',
+    SignUpScreen: 'SignUpScreen',
+    OnBoardingScreen: 'OnBoardingScreen',
+    ChooseAuthTypeScreen: 'ChooseAuthTypeScreen',
   },
   Home: {
     Dashboard: 'Dashboard',
