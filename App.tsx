@@ -1,6 +1,8 @@
+import {store} from '@src/app/store';
 import SplashScreen from '@src/components/SplashScreen';
 import {useEffect, useState} from 'react';
 import {Platform, StatusBar, StyleSheet, Text, View} from 'react-native';
+import {Provider} from 'react-redux';
 
 const styles = StyleSheet.create({
   container: {
@@ -33,7 +35,7 @@ const App = () => {
   // }, []);
 
   return (
-    <>
+    <Provider store={store}>
       <View style={styles.container}>
         <Text style={styles.text}>Hello, Dave.</Text>
 
@@ -45,7 +47,7 @@ const App = () => {
           />
         )}
       </View>
-    </>
+    </Provider>
   );
 };
 export default App;

@@ -46,7 +46,7 @@ const SplashScreen = ({onAnimationEnd}: Props) => {
   return (
     <Animated.View
       {...container}
-      style={[container.style, {opacity, backgroundColor: '#F5FCFF'}]}>
+      style={[container.style, {opacity, backgroundColor: 'red'}]}>
       <Animated.Image
         {...logo}
         style={[logo.style, {transform: [{translateY}]}]}
