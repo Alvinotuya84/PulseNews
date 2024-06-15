@@ -1,5 +1,10 @@
 import {store} from '@src/app/store';
 import SplashScreen from '@src/components/SplashScreen';
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQueryClient,
+} from '@tanstack/react-query';
 import {useEffect, useState} from 'react';
 import {Platform, StatusBar, StyleSheet, Text, View} from 'react-native';
 import {Provider} from 'react-redux';
@@ -22,7 +27,7 @@ const styles = StyleSheet.create({
 });
 
 const App = () => {
-  const [visible, setVisible] = useState(true);
+  const [splashScreenVisible, setSplashScreenVisible] = useState(true);
 
   // useEffect(() => {
   //   // set transparent status bar
@@ -33,21 +38,24 @@ const App = () => {
   //     StatusBar.setTranslucent(true);
   //   }
   // }, []);
+  const queryClient = new QueryClient();
 
   return (
-    <Provider store={store}>
-      <View style={styles.container}>
-        <Text style={styles.text}>Hello, Dave.</Text>
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+        <View style={styles.container}>
+          <Text style={styles.text}>Hello, Dave.</Text>
 
-        {visible && (
-          <SplashScreen
-            onAnimationEnd={() => {
-              setVisible(false);
-            }}
-          />
-        )}
-      </View>
-    </Provider>
+          {splashScreenVisible && (
+            <SplashScreen
+              onAnimationEnd={() => {
+                setSplashScreenVisible(false);
+              }}
+            />
+          )}
+        </View>
+      </Provider>
+    </QueryClientProvider>
   );
 };
 export default App;
