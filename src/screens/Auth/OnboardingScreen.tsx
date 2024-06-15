@@ -1,36 +1,31 @@
-import Box from '@/components/reusables/Box';
-import Page from '@/components/reusables/Page';
-import ThemedButton from '@/components/reusables/ThemedButton';
-import ThemedText from '@/components/reusables/ThemedText';
-import {sHeight, sWidth} from '@/constants/dimensions.constant';
-import {useTheme} from '@/hooks/useTheme.hook';
-import userStore from '@/stores/user.store';
-import {animateLayout} from '@/utils/animation.utils';
-import {AVPlaybackSource} from 'expo-av';
-import {Image} from 'expo-image';
-import {router} from 'expo-router';
+import Box from '@/src/components/reusables/Box';
+import Page from '@/src/components/reusables/Page';
+import ThemedButton from '@/src/components/reusables/ThemedButton';
+import ThemedText from '@/src/components/reusables/ThemedText';
+import {sHeight, sWidth} from '@/src/constants/dimensions.constants';
+import {useTheme} from '@/src/hooks/useTheme.hook';
+import {animateLayout} from '@/src/utils/animation.utils';
+
 import React, {useState} from 'react';
 import {ImageSourcePropType, ScrollView} from 'react-native';
 import CountryFlag from 'react-native-country-flag';
+import FastImage, {Source} from 'react-native-fast-image';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const onboardingSlidesData = [
   {
     title: 'Expand Your Circle by connecting  with people around the world',
-    img: require('@/assets/gifs/S2_gif.gif'),
-    video: require('@/assets/videos/S2_video.mp4'),
+    img: require('@/assets/news_one.png'),
     desc: 'Swipe, match, and build global friendships with  OnlyHugs. Connect with people worldwide and broaden your horizons.',
   },
   {
     title: 'Chat with strangers and make the your partner',
-    img: require('@/assets/gifs/S3_gif.gif'),
-    video: require('@/assets/videos/S3_video.mp4'),
+    img: require('@/assets/news_two.png'),
     desc: 'Break the ice and enjoy spontaneous chats with interesting strangers. Engage in lively conversations, discover common interests, and pave the way for meaningful connections.',
   },
   {
     title: 'Embark on a Personalized Journey to Discover Your Ideal Connection',
-    img: require('@/assets/gifs/S4_gif.gif'),
-    video: require('@/assets/videos/S4_video.mp4'),
+    img: require('@/assets/news_three.png'),
     desc: 'Ready to take it to the next level? Swipe, match, and turn intriguing conversations into lasting connections. OnlyHugs is here to help you find your ideal partner and embark on a journey of shared experiences.',
   },
 ];
@@ -83,7 +78,7 @@ function Onboard() {
               setCurrentSlideIndex(slideIndex);
 
               if (slideIndex === onboardingSlidesData.length) {
-                userStore.setState({onboarded: true});
+                // userStore.setState({onboarded: true});
               }
             }}
             snapToAlignment="center"
@@ -95,14 +90,12 @@ function Onboard() {
               return (
                 <OnboardingScreen
                   img={item.img}
-                  video={item.video}
                   title={item.title}
                   content={item.desc}
                   key={index}
                 />
               );
             })}
-            <SignUpOptions />
           </ScrollView>
         </Box>
 
@@ -170,13 +163,11 @@ const OnboardingScreen = ({
   title,
   content,
   img,
-  video,
   isInView,
 }: {
   title: string;
   content: string;
-  img: ImageSourcePropType;
-  video: AVPlaybackSource;
+  img: Source;
   isInView?: boolean;
 }) => {
   const theme = useTheme();
@@ -190,30 +181,14 @@ const OnboardingScreen = ({
         justify="center"
         color={theme.surface}
         radius={20}>
-        {/* {
-					<>
-						Platform.OS === "ios" ? (
-						<Image
-							source={img}
-							resizeMode="cover"
-							style={{
-								width: "100%",
-								height: "100%",
-							}}
-						/>
-						) : (
-						<Video
-							source={video}
-							shouldPlay={false}
-							isLooping
-							style={{
-								width: "100%",
-								height: "100%",
-							}}
-						/>
-						)
-					</>
-				} */}
+        <FastImage
+          source={img}
+          resizeMode="cover"
+          style={{
+            width: '100%',
+            height: '100%',
+          }}
+        />
       </Box>
       <Box align="center" justify="center" gap={10}>
         <ThemedText
@@ -230,95 +205,3 @@ const OnboardingScreen = ({
     </Box>
   );
 };
-
-export function SignUpOptions() {
-  const theme = useTheme();
-  return (
-    <Box align="center" justify="center" gap={40} width={sWidth} px={20}>
-      <Image
-        source={require('@/assets/utils/app/logo-with-title.png')}
-        contentFit="contain"
-        style={{
-          width: 200,
-          height: 150,
-        }}
-      />
-      <ThemedText>Let’s dive into your account</ThemedText>
-
-      <ThemedButton
-        block
-        label={'Continue with email'}
-        type="primary-outlined"
-        onPress={() => {
-          router.push({
-            pathname: '/sign-up',
-            params: {
-              signUpMethod: 'email',
-            },
-          });
-        }}
-      />
-      <ThemedButton
-        block
-        label={'Continue with phone'}
-        onPress={() => {
-          router.push({
-            pathname: '/sign-up',
-            params: {
-              signUpMethod: 'phone',
-            },
-          });
-        }}
-      />
-      <Box block direction="row" align="center" gap={20} px={10}>
-        <Box flex={1} height={1} color={theme.surface} />
-        <ThemedText size={'sm'}>or sign up with</ThemedText>
-        <Box flex={1} height={1} color={theme.surface} />
-      </Box>
-      <Box direction="row" align="center" justify="space-between" gap={20}>
-        <ThemedButton type="surface" pa={15} radius={40}>
-          <Image
-            source={require('@/assets/utils/auth/facebook.png')}
-            contentFit="contain"
-            style={{
-              width: 30,
-              height: 30,
-            }}
-          />
-        </ThemedButton>
-        <ThemedButton type="surface" pa={15} radius={40}>
-          <Image
-            source={require('@/assets/utils/auth/google.png')}
-            contentFit="contain"
-            style={{
-              width: 30,
-              height: 30,
-            }}
-          />
-        </ThemedButton>
-        <ThemedButton type="surface" pa={15} radius={40}>
-          <Image
-            source={require('@/assets/utils/auth/x-black.png')}
-            contentFit="contain"
-            style={{
-              width: 30,
-              height: 30,
-            }}
-          />
-        </ThemedButton>
-      </Box>
-      <ThemedButton
-        type="text"
-        onPress={() => {
-          router.push('/sign-in-options');
-        }}>
-        <Box direction="row" align="center" gap={10}>
-          <ThemedText size={'sm'}>Already have an account?</ThemedText>
-          <ThemedText size={'sm'} fontWeight="bold" color={theme.primary}>
-            Sign in
-          </ThemedText>
-        </Box>
-      </ThemedButton>
-    </Box>
-  );
-}
