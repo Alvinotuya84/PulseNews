@@ -1,4 +1,4 @@
-import {useTheme} from '@src/hooks/useTheme.hook';
+import {useTheme} from '@/src/hooks/useTheme.hook';
 import React, {ReactNode} from 'react';
 import {Text, TextProps, TextStyle} from 'react-native';
 

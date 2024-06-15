@@ -31,16 +31,16 @@ import ThemedButton, {
 } from './ThemedButton';
 import ThemedModal from './ThemedModal';
 import ThemedText, {ThemedTextProps} from './ThemedText';
-import {useTheme} from '@src/hooks/useTheme.hook';
-import {countries} from '@src/constants/countries.constants';
-import {sHeight} from '@src/constants/dimensions.constants';
+import {useTheme} from '@/src/hooks/useTheme.hook';
+import {countries} from '@/src/constants/countries.constants';
+import {sHeight} from '@/src/constants/dimensions.constants';
 import {
   formatDateWithoutDay,
   getDaysInMonth,
   getYear18YearsAgo,
   monthsWithNames,
-} from '@src/utils/date.utils';
-import {createNumberArray} from '@src/utils/array.utils';
+} from '@/src/utils/date.utils';
+import {createNumberArray} from '@/src/utils/array.utils';
 
 export default function ThemedTextInput({
   wrapper,

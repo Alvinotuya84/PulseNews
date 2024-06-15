@@ -1,5 +1,6 @@
-import {store} from '@src/app/store';
-import SplashScreen from '@src/components/SplashScreen';
+import {store} from '@/src/app/store';
+import SplashScreen from '@/src/components/SplashScreen';
+import Navigation from '@/src/navigation';
 import {
   QueryClient,
   QueryClientProvider,
@@ -12,9 +13,6 @@ import {Provider} from 'react-redux';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
   text: {
     fontSize: 24,
@@ -29,30 +27,21 @@ const styles = StyleSheet.create({
 const App = () => {
   const [splashScreenVisible, setSplashScreenVisible] = useState(true);
 
-  // useEffect(() => {
-  //   // set transparent status bar
-  //   StatusBar.setBarStyle('dark-content');
-
-  //   if (Platform.OS === 'android') {
-  //     StatusBar.setBackgroundColor('transparent');
-  //     StatusBar.setTranslucent(true);
-  //   }
-  // }, []);
   const queryClient = new QueryClient();
 
   return (
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
         <View style={styles.container}>
-          <Text style={styles.text}>Hello, Dave.</Text>
+          <Navigation />
 
-          {splashScreenVisible && (
+          {/* {splashScreenVisible && (
             <SplashScreen
               onAnimationEnd={() => {
                 setSplashScreenVisible(false);
               }}
             />
-          )}
+          )} */}
         </View>
       </Provider>
     </QueryClientProvider>

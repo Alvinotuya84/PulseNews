@@ -1,5 +1,6 @@
+import {Colors} from '@/src/configs/colors.configs';
 import {useState} from 'react';
-import {Animated, Dimensions} from 'react-native';
+import {Alert, Animated, Dimensions, InteractionManager} from 'react-native';
 import BootSplash from 'react-native-bootsplash';
 
 type Props = {
@@ -32,13 +33,16 @@ const SplashScreen = ({onAnimationEnd}: Props) => {
         }),
       ]).start();
 
-      Animated.timing(opacity, {
-        useNativeDriver: true,
-        toValue: 0,
-        duration: 150,
-        delay: 350,
-      }).start(() => {
-        onAnimationEnd();
+      InteractionManager.runAfterInteractions(() => {
+        Animated.timing(opacity, {
+          useNativeDriver: true,
+          toValue: 0,
+          duration: 150,
+          delay: 350,
+        }).start(() => {
+          Alert.alert('j;lj;');
+          onAnimationEnd();
+        });
       });
     },
   });
@@ -46,7 +50,10 @@ const SplashScreen = ({onAnimationEnd}: Props) => {
   return (
     <Animated.View
       {...container}
-      style={[container.style, {opacity, backgroundColor: 'red'}]}>
+      style={[
+        container.style,
+        {opacity, backgroundColor: Colors.common.primary},
+      ]}>
       <Animated.Image
         {...logo}
         style={[logo.style, {transform: [{translateY}]}]}

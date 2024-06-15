@@ -11,8 +11,8 @@ import {useCallback, useEffect} from 'react';
 
 import type {ToastType} from './context';
 import ThemedText from './reusables/ThemedText';
-import {Colors} from '@src/configs/colors.configs';
-import {useTheme} from '@src/hooks/useTheme.hook';
+import {Colors} from '@/src/configs/colors.configs';
+import {useTheme} from '@/src/hooks/useTheme.hook';
 
 // Define the props for the Toast component
 type ToastProps = {

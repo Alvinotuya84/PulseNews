@@ -2,7 +2,7 @@ import React from 'react';
 import Box, {BoxProps} from './Box';
 import ThemedIcon, {ThemedIconProps} from './ThemedIcon';
 import ThemedText, {ThemedTextProps} from './ThemedText';
-import {useTheme} from '@src/hooks/useTheme.hook';
+import {useTheme} from '@/src/hooks/useTheme.hook';
 
 export default function ThemedCard({
   title,

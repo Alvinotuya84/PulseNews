@@ -10,9 +10,9 @@ import Box, {BoxProps} from './Box';
 import ThemedButton from './ThemedButton';
 import ThemedIcon, {ThemedIconProps} from './ThemedIcon';
 import ThemedText, {ThemedTextProps} from './ThemedText';
-import {useTheme} from '@src/hooks/useTheme.hook';
-import {sHeight} from '@src/constants/dimensions.constants';
-import useKeyboardVisibility from '@src/hooks/useKeyboardVisiblity.hook';
+import {useTheme} from '@/src/hooks/useTheme.hook';
+import {sHeight} from '@/src/constants/dimensions.constants';
+import useKeyboardVisibility from '@/src/hooks/useKeyboardVisiblity.hook';
 
 export default function ThemedModal({
   visible = false,

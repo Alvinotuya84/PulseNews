@@ -3,7 +3,7 @@ import Box from './Box';
 import ThemedButton, {ThemedButtonProps} from './ThemedButton';
 import ThemedIcon, {ThemedIconProps} from './ThemedIcon';
 import ThemedText, {ThemedTextProps} from './ThemedText';
-import {useTheme} from '@src/hooks/useTheme.hook';
+import {useTheme} from '@/src/hooks/useTheme.hook';
 
 export default function ThemedRadioButton({
   checked = false,
