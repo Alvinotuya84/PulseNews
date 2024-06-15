@@ -1,4 +1,4 @@
-import SettingsStore from '@/stores/settings.store';
+import SettingsStore from '@src/app/theme';
 import {useColorScheme} from 'react-native';
 import {Colors} from '@src/configs/colors.configs';
 
