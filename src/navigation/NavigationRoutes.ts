@@ -19,4 +19,4 @@ type HomeStackParamList = {
 };
 
 export type RootStackParamList = AuthStackParamList & HomeStackParamList;
-export type StackNavigation = NavigationProp<RootStackParamList>;
+export type StackNavigationTypes = NavigationProp<RootStackParamList>;

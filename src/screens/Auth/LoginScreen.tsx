@@ -1,13 +1,14 @@
 import {View, Text} from 'react-native';
 import React from 'react';
+import Page from '@/src/components/reusables/Page';
 
 type Props = {};
 
 const LoginScreen = (props: Props) => {
   return (
-    <View>
+    <Page>
       <Text>LoginScreen</Text>
-    </View>
+    </Page>
   );
 };
 
