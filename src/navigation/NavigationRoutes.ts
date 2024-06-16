@@ -8,6 +8,7 @@ export const NavigationRoutes = {
     ChooseAuthTypeScreen: 'ChooseAuthTypeScreen',
     OTPScreen: 'OTPScreen',
     ConnectSocialScreen: 'ConnectSocialScreen',
+    ForgotPasswordScreen: 'ForgotPasswordScreen',
   },
   Home: {
     Dashboard: 'Dashboard',

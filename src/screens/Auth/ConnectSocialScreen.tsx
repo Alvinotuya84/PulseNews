@@ -16,11 +16,13 @@ import ThemedButton from '@/src/components/reusables/ThemedButton';
 import {sWidth} from '@/src/constants/dimensions.constants';
 import ThemedIcon from '@/src/components/reusables/ThemedIcon';
 import Spacer from '@/src/components/reusables/Spacer';
+import {useSafeNavigation} from '@/src/hooks/useSafeNavigation';
 
 type Props = {};
 
 const ConnectSocialScreen = (props: Props) => {
   const theme = useTheme();
+  const navigation = useSafeNavigation();
   return (
     <Page px={scale(20)}>
       <ImageWrapper
@@ -42,7 +44,10 @@ const ConnectSocialScreen = (props: Props) => {
         <Box width={'100%'} my={scale(20)}>
           <AuthStepIndicator currentStep={3} />
         </Box>
-        <ThemedButton width={'100%'} type="primary-outlined">
+        <ThemedButton
+          width={'100%'}
+          onPress={() => navigation.navigate('LoginScreen')}
+          type="primary-outlined">
           <Box direction="row" pa={10} align="center">
             <ThemedIcon source="AntDesign" size={'md'} name="google" />
             <Spacer width={10} />

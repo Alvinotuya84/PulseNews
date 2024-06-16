@@ -9,11 +9,14 @@ import {scale} from '@/src/constants/scaler.constants';
 import AuthStepIndicator from '@/src/components/reusables/AuthStepIndicator';
 import ThemedTextInput, {
   ThemedEmailInput,
+  ThemedPasswordInput,
   ThemedPhoneNumberInput,
 } from '@/src/components/reusables/ThemedTextInput';
 import ThemedButton from '@/src/components/reusables/ThemedButton';
 import {sWidth} from '@/src/constants/dimensions.constants';
 import {useSafeNavigation} from '@/src/hooks/useSafeNavigation';
+import ThemedIcon from '@/src/components/reusables/ThemedIcon';
+import Spacer from '@/src/components/reusables/Spacer';
 
 type Props = {};
 
@@ -34,7 +37,7 @@ const LoginScreen = (props: Props) => {
           color={theme.primary}
           fontWeight="bold"
           size={'xxl'}>
-          Create Account
+          Login here
         </ThemedText>
 
         <ThemedText>
@@ -45,35 +48,41 @@ const LoginScreen = (props: Props) => {
           <AuthStepIndicator currentStep={1} />
         </Box>
 
-        <ThemedTextInput
-          wrapper={{
-            width: '100%',
-          }}
-          placeholder="Enter your email"
-        />
-        <ThemedPhoneNumberInput
-          wrapper={{
-            width: '100%',
-          }}
-          placeholder="Enter your phone number"
-        />
         <ThemedEmailInput
           wrapper={{
             width: '100%',
           }}
-          placeholder="Enter your email"
+          placeholder="Enter your email address"
         />
 
-        <ThemedButton width={'100%'} label={'Continue'} />
+        <Box align="flex-end" width={'100%'}>
+          <ThemedPasswordInput
+            wrapper={{
+              width: '100%',
+            }}
+          />
+          <ThemedButton
+            type="text"
+            label={'Forgot Password?'}
+            labelProps={{
+              color: theme.primary,
+            }}
+            onPress={() => navigation.navigate('ForgotPasswordScreen')}
+          />
+        </Box>
+
+        <ThemedButton width={'100%'} label={'Login'} />
+
         <ThemedButton
-          type="text"
-          labelProps={{
-            color: theme.primary,
-          }}
-          onPress={() => navigation.navigate('OTPScreen')}
           width={'100%'}
-          label={'Already have an account?'}
-        />
+          onPress={() => navigation.navigate('LoginScreen')}
+          type="primary-outlined">
+          <Box direction="row" pa={10} align="center">
+            <ThemedIcon source="AntDesign" size={'md'} name="google" />
+            <Spacer width={10} />
+            <ThemedText size={'sm'}>Sign-in using google</ThemedText>
+          </Box>
+        </ThemedButton>
       </Box>
     </Page>
   );
