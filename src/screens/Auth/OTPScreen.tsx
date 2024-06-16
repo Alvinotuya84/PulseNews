@@ -9,17 +9,16 @@ import {scale} from '@/src/constants/scaler.constants';
 import AuthStepIndicator from '@/src/components/reusables/AuthStepIndicator';
 import ThemedTextInput, {
   ThemedEmailInput,
+  ThemedOTPInput,
   ThemedPhoneNumberInput,
 } from '@/src/components/reusables/ThemedTextInput';
 import ThemedButton from '@/src/components/reusables/ThemedButton';
 import {sWidth} from '@/src/constants/dimensions.constants';
-import {useSafeNavigation} from '@/src/hooks/useSafeNavigation';
 
 type Props = {};
 
-const SignUpScreen = (props: Props) => {
+const OTPScreen = (props: Props) => {
   const theme = useTheme();
-  const navigation = useSafeNavigation();
   return (
     <Page px={scale(20)}>
       <ImageWrapper
@@ -34,7 +33,7 @@ const SignUpScreen = (props: Props) => {
           color={theme.primary}
           fontWeight="bold"
           size={'xxl'}>
-          Create Account
+          OTP
         </ThemedText>
 
         <ThemedText>
@@ -42,41 +41,21 @@ const SignUpScreen = (props: Props) => {
           you
         </ThemedText>
         <Box width={'100%'} my={scale(20)}>
-          <AuthStepIndicator currentStep={1} />
+          <AuthStepIndicator currentStep={2} />
         </Box>
 
-        <ThemedTextInput
+        <ThemedOTPInput
+          otpLength={4}
           wrapper={{
             width: '100%',
           }}
-          placeholder="Enter your email"
         />
-        <ThemedPhoneNumberInput
-          wrapper={{
-            width: '100%',
-          }}
-          placeholder="Enter your phone number"
-        />
-        <ThemedEmailInput
-          wrapper={{
-            width: '100%',
-          }}
-          placeholder="Enter your email"
-        />
+        <ThemedButton width={'100%'} type="text" label={'Resend Code in 50s'} />
 
         <ThemedButton width={'100%'} label={'Continue'} />
-        <ThemedButton
-          type="text"
-          labelProps={{
-            color: theme.primary,
-          }}
-          onPress={() => navigation.navigate('OTPScreen')}
-          width={'100%'}
-          label={'Already have an account?'}
-        />
       </Box>
     </Page>
   );
 };
 
-export default SignUpScreen;
+export default OTPScreen;

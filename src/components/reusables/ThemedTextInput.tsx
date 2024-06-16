@@ -41,6 +41,7 @@ import {
   monthsWithNames,
 } from '@/src/utils/date.utils';
 import {createNumberArray} from '@/src/utils/array.utils';
+import {scale} from '@/src/constants/scaler.constants';
 
 export default function ThemedTextInput({
   wrapper,
@@ -973,8 +974,8 @@ export function ThemedOTPInput(
             style={{
               fontSize: 20,
               padding: 0,
-              height: 50,
-              width: 50,
+              height: 40,
+              width: 40,
               paddingHorizontal: 20,
               color: theme.text,
             }}
@@ -982,6 +983,7 @@ export function ThemedOTPInput(
               borderColor:
                 currentInput === index ? theme.primary : theme.stroke,
               radius: currentInput === index ? 15 : 10,
+              mx: scale(10),
             }}
             value={otp[index]}
             onChangeText={value => handleInput(value, index)}
