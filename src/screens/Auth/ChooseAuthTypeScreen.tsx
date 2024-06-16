@@ -7,13 +7,15 @@ import ThemedText from '@/src/components/reusables/ThemedText';
 import {useTheme} from '@/src/hooks/useTheme.hook';
 import Box from '@/src/components/reusables/Box';
 import ThemedButton from '@/src/components/reusables/ThemedButton';
+import {scale} from '@/src/constants/scaler.constants';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 type Props = {};
 
 const ChooseAuthTypeScreen = (props: Props) => {
   const theme = useTheme();
   return (
-    <Page align="center" justify="space-between" px={20}>
+    <Page align="center" justify="space-between" px={scale(20)}>
       <ImageWrapper
         source={require('@/assets/auth/choose_auth_type.png')}
         height={sHeight * 0.5}
@@ -29,8 +31,8 @@ const ChooseAuthTypeScreen = (props: Props) => {
 
       <Box
         width={'100%'}
-        py={20}
-        gap={10}
+        py={scale(20)}
+        gap={scale(10)}
         justify="space-evenly"
         direction="row">
         <ThemedButton width={sWidth * 0.4} type="primary" label={'Login'} />
@@ -40,6 +42,7 @@ const ChooseAuthTypeScreen = (props: Props) => {
           type="primary-outlined"
           label={'Register'}
         />
+        <AntDesign name="rocket1" size={30} color={'red'} />
       </Box>
     </Page>
   );
