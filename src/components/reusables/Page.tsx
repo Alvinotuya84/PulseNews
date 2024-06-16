@@ -22,18 +22,16 @@ import ThemedButton from './ThemedButton';
 import ThemedIcon from './ThemedIcon';
 import {useTheme} from '@/src/hooks/useTheme.hook';
 import {scale} from '@/src/constants/scaler.constants';
+import {useSafeNavigation} from '@/src/hooks/useSafeNavigation';
+import {useNavigation} from '@react-navigation/native';
 
 export function BackButton() {
   const platform = Platform.OS;
+  const navigation = useNavigation();
   return (
     <>
       {true && (
-        <ThemedButton
-          type="text"
-          onPress={() => {
-            // router.back();
-          }}
-          pa={10}>
+        <ThemedButton type="text" onPress={() => navigation.goBack()} pa={10}>
           {platform === 'ios' ? (
             <ThemedIcon name="chevron-left" size={'xxl'} />
           ) : (
