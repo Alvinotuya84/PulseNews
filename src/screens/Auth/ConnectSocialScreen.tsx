@@ -35,7 +35,7 @@ const ConnectSocialScreen = (props: Props) => {
           color={theme.primary}
           fontWeight="bold"
           size={'xxl'}>
-          Connect googleh
+          Connect google
         </ThemedText>
 
         <ThemedText>Please connect your google account</ThemedText>
