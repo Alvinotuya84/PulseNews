@@ -9,11 +9,13 @@ import Box from '@/src/components/reusables/Box';
 import ThemedButton from '@/src/components/reusables/ThemedButton';
 import {scale} from '@/src/constants/scaler.constants';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {useSafeNavigation} from '@/src/hooks/useSafeNavigation';
 
 type Props = {};
 
 const ChooseAuthTypeScreen = (props: Props) => {
   const theme = useTheme();
+  const navigation = useSafeNavigation();
   return (
     <Page align="center" justify="space-between" px={scale(20)}>
       <ImageWrapper
@@ -40,9 +42,9 @@ const ChooseAuthTypeScreen = (props: Props) => {
         <ThemedButton
           width={sWidth * 0.4}
           type="primary-outlined"
+          onPress={() => navigation.navigate('SignUpScreen')}
           label={'Register'}
         />
-        <AntDesign name="rocket1" size={30} color={'red'} />
       </Box>
     </Page>
   );

@@ -108,7 +108,7 @@ const Page = forwardRef(
                     </ThemedText>
                   </Box>
 
-                  <Box align="flex-end">
+                  {/* <Box align="flex-end">
                     {props.header?.rightComponent ? (
                       props.header?.rightComponent
                     ) : (
@@ -118,7 +118,7 @@ const Page = forwardRef(
                         onPress={() => {}}
                       />
                     )}
-                  </Box>
+                  </Box> */}
                 </Box>
               )}
             </>
