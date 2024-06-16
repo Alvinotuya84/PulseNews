@@ -7,6 +7,7 @@ export const NavigationRoutes = {
     OnBoardingScreen: 'OnBoardingScreen',
     ChooseAuthTypeScreen: 'ChooseAuthTypeScreen',
     OTPScreen: 'OTPScreen',
+    ConnectSocialScreen: 'ConnectSocialScreen',
   },
   Home: {
     Dashboard: 'Dashboard',

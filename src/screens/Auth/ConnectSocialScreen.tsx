@@ -14,14 +14,13 @@ import ThemedTextInput, {
 } from '@/src/components/reusables/ThemedTextInput';
 import ThemedButton from '@/src/components/reusables/ThemedButton';
 import {sWidth} from '@/src/constants/dimensions.constants';
-import {useSafeNavigation} from '@/src/hooks/useSafeNavigation';
+import ThemedIcon from '@/src/components/reusables/ThemedIcon';
+import Spacer from '@/src/components/reusables/Spacer';
 
 type Props = {};
 
-const OTPScreen = (props: Props) => {
+const ConnectSocialScreen = (props: Props) => {
   const theme = useTheme();
-
-  const navigation = useSafeNavigation();
   return (
     <Page px={scale(20)}>
       <ImageWrapper
@@ -30,38 +29,31 @@ const OTPScreen = (props: Props) => {
         width={100}
         resizeMode="contain"
       />
-      <Box flex={1} justify="space-evenly" align="center">
+      <Box flex={1} align="center">
         <ThemedText
           weight="bold"
           color={theme.primary}
           fontWeight="bold"
           size={'xxl'}>
-          OTP
+          Connect google
         </ThemedText>
 
-        <ThemedText>
-          Please enter the otp sent to your phone number +254797 **3
-        </ThemedText>
+        <ThemedText>Please connect your google account</ThemedText>
         <Box width={'100%'} my={scale(20)}>
-          <AuthStepIndicator currentStep={2} />
+          <AuthStepIndicator currentStep={3} />
         </Box>
-
-        <ThemedOTPInput
-          otpLength={4}
-          wrapper={{
-            width: '100%',
-          }}
-        />
-        <ThemedButton width={'100%'} type="text" label={'Resend Code in 50s'} />
-
-        <ThemedButton
-          width={'100%'}
-          onPress={() => navigation.navigate('ConnectSocialScreen')}
-          label={'Continue'}
-        />
+        <ThemedButton width={'100%'} type="primary-outlined">
+          <Box direction="row" pa={10} align="center">
+            <ThemedIcon source="AntDesign" size={'md'} name="google" />
+            <Spacer width={10} />
+            <ThemedText size={'sm'}>
+              Complete the sign-up by connect google
+            </ThemedText>
+          </Box>
+        </ThemedButton>
       </Box>
     </Page>
   );
 };
 
-export default OTPScreen;
+export default ConnectSocialScreen;
