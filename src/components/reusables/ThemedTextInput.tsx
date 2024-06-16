@@ -58,6 +58,7 @@ export default function ThemedTextInput({
   ...input
 }: ThemedTextInputProps) {
   const theme = useTheme();
+  const [isFocused, setIsFocused] = useState(false);
 
   const sizeStyles = getTextStyles(size);
 
@@ -76,7 +77,7 @@ export default function ThemedTextInput({
           radius={15}
           borderWidth={1}
           direction="row"
-          borderColor={theme.stroke}
+          borderColor={isFocused ? 'orange' : theme.stroke}
           align="stretch"
           {...wrapper}>
           {leftSlot && (
@@ -106,6 +107,8 @@ export default function ThemedTextInput({
             placeholderTextColor={theme.text}
             {...input}
             ref={textInputRef}
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setIsFocused(false)}
           />
           {rightSlot && (
             <Box

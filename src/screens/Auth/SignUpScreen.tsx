@@ -7,6 +7,12 @@ import ThemedText from '@/src/components/reusables/ThemedText';
 import {useTheme} from '@/src/hooks/useTheme.hook';
 import {scale} from '@/src/constants/scaler.constants';
 import AuthStepIndicator from '@/src/components/reusables/AuthStepIndicator';
+import ThemedTextInput, {
+  ThemedEmailInput,
+  ThemedPhoneNumberInput,
+} from '@/src/components/reusables/ThemedTextInput';
+import ThemedButton from '@/src/components/reusables/ThemedButton';
+import {sWidth} from '@/src/constants/dimensions.constants';
 
 type Props = {};
 
@@ -16,11 +22,11 @@ const SignUpScreen = (props: Props) => {
     <Page px={scale(20)}>
       <ImageWrapper
         source={require('@/assets/logo-light.png')}
-        height={200}
-        width={200}
+        height={100}
+        width={100}
         resizeMode="contain"
       />
-      <Box align="center">
+      <Box flex={1} justify="space-evenly" align="center">
         <ThemedText
           weight="bold"
           color={theme.primary}
@@ -33,8 +39,38 @@ const SignUpScreen = (props: Props) => {
           Welcome back stay informed with personalized news tailored just for
           you
         </ThemedText>
+        <Box width={'100%'} my={scale(20)}>
+          <AuthStepIndicator currentStep={1} />
+        </Box>
 
-        <AuthStepIndicator currentStep={3} />
+        <ThemedTextInput
+          wrapper={{
+            width: '100%',
+          }}
+          placeholder="Enter your email"
+        />
+        <ThemedPhoneNumberInput
+          wrapper={{
+            width: '100%',
+          }}
+          placeholder="Enter your phone number"
+        />
+        <ThemedEmailInput
+          wrapper={{
+            width: '100%',
+          }}
+          placeholder="Enter your email"
+        />
+
+        <ThemedButton width={'100%'} label={'Continue'} />
+        <ThemedButton
+          type="text"
+          labelProps={{
+            color: theme.primary,
+          }}
+          width={'100%'}
+          label={'Already have an account?'}
+        />
       </Box>
     </Page>
   );

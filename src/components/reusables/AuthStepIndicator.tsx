@@ -6,11 +6,11 @@ import {scale} from '@/src/constants/scaler.constants';
 import {useTheme} from '@/src/hooks/useTheme.hook';
 import ThemedText from './ThemedText';
 
-interface StepIndicatorProps {
+interface AuthStepIndicatorProps {
   currentStep: number;
 }
 
-const StepIndicator: React.FC<StepIndicatorProps> = ({currentStep}) => {
+const AuthStepIndicator: React.FC<AuthStepIndicatorProps> = ({currentStep}) => {
   const theme = useTheme();
 
   const renderStepContent = (stepNumber: number) => {
@@ -72,4 +72,4 @@ const StepIndicator: React.FC<StepIndicatorProps> = ({currentStep}) => {
   );
 };
 
-export default StepIndicator;
+export default AuthStepIndicator;
