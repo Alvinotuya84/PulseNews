@@ -1,5 +1,5 @@
 import {View, Text} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import Page from '@/src/components/reusables/Page';
 import AuthFancyHeader from '@/src/components/reusables/AuthFancyHeader';
 import Box from '@/src/components/reusables/Box';
@@ -15,13 +15,28 @@ import ThemedRadioButton from '@/src/components/reusables/ThemedRadioButton';
 type Props = {};
 
 const ForgotPasswordScreen = (props: Props) => {
+  const [selectedVerificationType, setSelectedVerificationType] = useState<
+    'email' | 'phone'
+  >('email');
   return (
     <Page px={20}>
-      <AuthFancyHeader
-        title="Forgot Password"
-        subtitle="Please select which contact details we should use to reset your password"
-      />
-      <VerificationTypeSelector />
+      <Box flex={1}>
+        <AuthFancyHeader
+          title="Forgot Password"
+          subtitle="Please select which contact details we should use to reset your password"
+        />
+        <VerificationTypeSelector
+          type="email"
+          onPress={() => setSelectedVerificationType('email')}
+          selected={selectedVerificationType === 'email'}
+        />
+        <VerificationTypeSelector
+          type="phone"
+          onPress={() => setSelectedVerificationType('phone')}
+          selected={selectedVerificationType === 'phone'}
+        />
+        <ThemedButton mt={scale(20)} label={'Continue'} />
+      </Box>
     </Page>
   );
 };
@@ -34,8 +49,9 @@ const VerificationTypeSelector = (props: {
 }) => {
   const theme = useTheme();
   return (
-    <ThemedButton type="surface">
+    <ThemedButton onPress={props.onPress} type="text">
       <Box
+        my={scale(10)}
         direction="row"
         justify="space-between"
         align="center"
